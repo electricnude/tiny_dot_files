@@ -1,0 +1,82 @@
+[color]
+    ui = auto
+    status = auto
+    diff = auto
+    branch = auto
+
+[alias]
+    co = checkout
+
+    br = branch
+    b  = branch
+
+    st = status
+    s  = status
+    sb = status -sb
+
+    df = diff
+
+#   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+    graph = log --graph --date-order -C -M --format=\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+    g     = log --graph --date=format:\"%Y.%m.%d %H:%M\" --format=\"%C(yellow)%h%C(reset) %C(magenta)[%ad]%C(reset)%C(auto)%d%C(reset) %s %C(cyan)@%an%C(reset)\"
+    gg    = log --graph --date=format:\"%Y.%m.%d %H:%M\" --format=\"%C(yellow)%h%C(reset) %C(magenta)[%ad]%C(reset)%C(auto)%d%C(reset) %s %C(cyan)@%an%C(reset)\" --all
+
+#   list = log --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --date=short
+#   list = log --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --date=format:\"%Y-%m-%d(%a) %H:%M:%S\"
+    list = log --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --date=format:\"%Y-%m-%d %a %H:%M:%S\"
+    last = log -1 HEAD
+
+    ignore = update-index --assume-unchanged
+    unignore = update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep "^[a-z]"
+
+#   ci = commit -a
+#   up = pull --rebase
+
+    chmod = update-index --chmod
+# x ore = !git config user.name ngyuki && git config user.email ngyuki.jp@gmail.com
+# x hj = !git config user.name goto && git config user.email gotou@headjapan.com
+
+[diff]
+
+
+
+[core]
+    excludesfile = ~/.gitignore.own_basis
+#   pager = lv -c -Iu8 -Ou8
+    pager = cat
+    editor = vim -c \"set fenc=utf-8\"
+
+[push]
+#   default = matching
+    default = simple
+#   default = current
+
+
+# via: http://kitakitabauer.hatenablog.com/entry/2017/02/19/030329
+[url "git@github.com:"]
+    pushInsteadOf = git://github.com/
+    pushInsteadOf = https://github.com/
+[url "git://github.com/"]
+    insteadOf = https://github.com/
+
+
+[pager]
+#   log   = diff-highlight | less
+#   show  = diff-highlight | less
+#   diff  = diff-highlight | less
+#   stash = diff-highlight | cat
+    log   = less
+    show  = less
+    diff  = less
+    stash = cat
+
+[user]
+    useConfigOnly = true
+
+[merge]
+    ff = false
+
+[pull]
+    ff = only
+

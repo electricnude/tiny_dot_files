@@ -1,0 +1,4 @@
+[include]
+    path = ~/.gitconfig.own_identify
+    path = ~/.gitconfig.own_basis
+
