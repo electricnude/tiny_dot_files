@@ -813,11 +813,11 @@ elseif s:my_flag__fold_type == 'foldcc'
 
     " --- :: l(開く) -----------------------------------------------------
     nnoremap <expr>l  foldclosed('.') != -1 ? 'zo' : 'l'
-    " 
+    "
 
     " --- :: <C-_>(閉じる) -----------------------------------------------
     nnoremap <silent><C-_> :<C-u>call <SID>smart_foldcloser()<CR>
-    function! s:smart_foldcloser() 
+    function! s:smart_foldcloser()
         if foldlevel('.') == 0
             norm! zM
             return
@@ -834,8 +834,8 @@ elseif s:my_flag__fold_type == 'foldcc'
         endif
         norm! zM
     endfunction
-    " 
-    " 
+    "
+    "
 
     " --- :: z[ , z] (FoldingMarkerを挿入する) ---------------------------
     "   FoldingMarkerを現在行の末尾に挿入します。z[で'{ { {'が、z]で'} } }'が挿入されます。
@@ -843,7 +843,7 @@ elseif s:my_flag__fold_type == 'foldcc'
     "   また、自動的にマーカーをコメント化したり、間に空白文字を挟むなどしてくれるので便利です。
     nnoremap  z[     :<C-u>call <SID>put_foldmarker(0)<CR>
     nnoremap  z]     :<C-u>call <SID>put_foldmarker(1)<CR>
-    function! s:put_foldmarker(foldclose_p) 
+    function! s:put_foldmarker(foldclose_p)
         let crrstr = getline('.')
         let padding = crrstr=='' ? '' : crrstr=~'\s$' ? '' : ' '
         let [cms_start, cms_end] = ['', '']
@@ -855,26 +855,26 @@ elseif s:my_flag__fold_type == 'foldcc'
         let fmr = split(&fmr, ',')[a:foldclose_p]. (v:count ? v:count : '')
         exe 'norm! A'. padding. cms_start. fmr. cms_end
     endfunction
-    " 
-    " 
+    "
+    "
 
     " --- :: z<C-_> (現在折り畳みを閉じて、他の折り畳みをすべて閉じる) ---
     nnoremap <silent>z<C-_>    zMzvzc
-    " 
+    "
 
     " --- :: z0 (現在いる折り畳みと同じ階層までの全ての折り畳みを開く) ---
     nnoremap <silent>z0    :<C-u>set foldlevel=<C-r>=foldlevel('.')<CR><CR>
-    " 
+    "
 
     " --- :: [z , ]z  ----------------------------------------------------
     "   現在自分がいる折り畳みの先頭や末尾にジャンプします。
     "   特に大見出しなどの役割を果たしている巨大な折り畳み内で威力を発揮します。
     "   逆に小さな折り畳みではそれほど役に立ちません。
-    " 
+    "
 
     " --- :: zj , zk  ----------------------------------------------------
     "   いらない子
-    " 
+    "
 
 
     "  // End As folding as plugin: foldCC
